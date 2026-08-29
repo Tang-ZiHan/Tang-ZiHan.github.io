@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal homepage of Zihan Tang.">
+  <title>Zihan Tang | Home</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5d6a76;
+      --line: #dfe5e9;
+      --accent: #176b87;
+      --accent-dark: #0f4f64;
+      --paper: #f7f9fa;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+
+    .site {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: minmax(300px, 42vw) 1fr;
+    }
+
+    .portrait {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      background: #b9cbd0;
+    }
+    .portrait::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(13, 34, 44, .06), rgba(13, 34, 44, .32));
+      pointer-events: none;
+    }
+    .portrait img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .portrait-label {
+      position: absolute;
+      z-index: 1;
+      left: clamp(24px, 5vw, 72px);
+      bottom: clamp(25px, 6vw, 72px);
+      color: var(--white);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .73rem;
+      font-weight: 600;
+    }
+
+    main {
+      width: min(760px, 100%);
+      padding: clamp(42px, 8vw, 104px) clamp(28px, 7vw, 104px);
+    }
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--accent);
+      font-size: .74rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+    .eyebrow-gap { display: inline-block; width: 1.15em; }
+    h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.1rem, 7vw, 5.6rem);
+      font-weight: 500;
+      letter-spacing: -.055em;
+      line-height: .98;
+    }
+    .role {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+    }
+    .intro {
+      margin: 42px 0 0;
+      max-width: 660px;
+      font-size: 1.08rem;
+    }
+    .intro_bold {
+      margin: 20px 0 0;
+      max-width: 660px;
+      font-size: 1.08rem;
+      font-weight: 600;
+    }
+    section {
+      margin-top: 66px;
+      padding-top: 25px;
+      border-top: 1px solid var(--line);
+    }
+    h2 {
+      margin: 0 0 22px;
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+    }
+    p { margin: 0 0 17px; }
+    ul { margin: 0; padding: 0; list-style: none; }
+    li { position: relative; margin: 0 0 17px; padding-left: 21px; }
+    li::before {
+      content: "";
+      position: absolute;
+      top: .75em;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .publication { margin-bottom: 20px; }
+    .publication a {
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid #a7c1ca;
+      transition: color .2s, border-color .2s;
+    }
+    .publication a:hover { color: var(--accent); border-color: var(--accent); }
+    .venue { color: var(--muted); font-size: .93rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px 26px;
+    }
+    .contact-inline {
+      margin-top: 34px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+    .contact-item span {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .contact-item a { color: var(--ink); text-decoration: none; }
+    .contact-item a:hover { color: var(--accent); }
+    .cv-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 29px;
+      padding: 12px 18px;
+      color: var(--white);
+      background: var(--accent-dark);
+      border-radius: 3px;
+      font-size: .87rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .cv-link:hover { background: var(--accent); transform: translateY(-1px); }
+    .cv-link svg { width: 16px; height: 16px; fill: currentColor; }
+    footer {
+      margin-top: 75px;
+      color: #87929a;
+      font-size: .78rem;
+    }
+
+    @media (max-width: 760px) {
+      .site { display: block; }
+      .portrait { position: relative; height: min(78vh, 650px); min-height: 420px; }
+      .portrait img { object-position: center 35%; }
+      main { padding-top: 48px; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <aside class="portrait" aria-label="Portrait of Zihan Tang">
+      <img src="assets/profile.jpg" alt="Zihan Tang outdoors">
+      <div class="portrait-label">Taken in Cairns, Queensland, Australia</div>
+    </aside>
+
+    <main>
+      <header>
+        <p class="eyebrow">Hi there!<span class="eyebrow-gap" aria-hidden="true"></span>I am</p>
+        <h1>Zihan Tang</h1>
+        <p class="role"> Mathematics &amp; Applied Mathematics<br>Undergraduate student at Tsinghua University</p>
+        <p class="intro">I study how learning systems adapt through training and computation, with a focus on understanding learning dynamics and designing principled training and test-time algorithms. My recent work studies mode collapse and optimization in RLVR, curriculum learning, and verification for reasoning models.</p>
+        <p class="intro_bold">I am currently preparing for PhD applications for Fall 2027.</p>
+
+        <div class="contact-inline" aria-label="Contact information">
+          <div class="contact-grid">
+            <div class="contact-item"><span>Email</span><a href="mailto:tangzh23@mails.tsinghua.edu.cn">tangzh23@mails.tsinghua.edu.cn</a></div>
+            <div class="contact-item"><span>Telephone &amp; WeChat</span>+86 177 2642 0782</div>
+          </div>
+          <a class="cv-link" href="assets/Zihan_Tang_CV_w_photo.pdf" target="_blank" rel="noopener" download>
+            View / download CV
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v11.17l3.59-3.58L17 12l-5 5-5-5 1.41-1.41L11 14.17V3h1zm-7 16h14v2H5v-2z"/></svg>
+          </a>
+        </div>
+      </header>
+
+      <section id="research">
+        <h2>Research interests</h2>
+        <ul>
+          <li>Adaptive learning systems</li>
+          <li>Learning dynamics and optimization</li>
+          <li>Test-time computation</li>
+        </ul>
+      </section>
+
+      <section id="publications">
+        <h2>Selected publications</h2>
+        <div class="publication"><a href="https://arxiv.org/abs/2511.21522" target="_blank" rel="noopener">Pessimistic Verification for Open Ended Math Questions</a> <span class="venue">· ICML</span></div>
+        <div class="publication"><a href="https://arxiv.org/abs/2605.22074" target="_blank" rel="noopener">From Reasoning Chains to Verifiable Subproblems: Curriculum Reinforcement Learning Enables Credit Assignment for LLM Reasoning</a> <span class="venue">· co-first author</span></div>
+        <div class="publication"><span>LiveIdeaBench: Forecasting Emerging Research Ideas Against Future Literature</span></div>
+      </section>
+
+      <section id="about">
+        <h2>About me</h2>
+        <p>I am an undergraduate at Qiuzhen College, Tsinghua University, majoring in Mathematics and Applied Mathematics, with a GPA of 3.93/4.00 (3/128). I conduct research in artificial intelligence, focusing on how generative systems learn, adapt, and reason.</p>
+        <p>My mathematical background strongly influences how I approach machine learning: I enjoy identifying simple structures behind empirical phenomena, developing a principled explanation, and turning that understanding into algorithms that can be tested at scale.</p>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
